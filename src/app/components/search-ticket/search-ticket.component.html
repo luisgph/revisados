@@ -1,0 +1,48 @@
+<div class="animated fadeIn bg-site">
+    <app-toolbar></app-toolbar>
+    <form id="loginform" (ngSubmit)="search()" #forma="ngForm">
+        <div class="row text-center">
+            <div class="col">
+                <label class="col-form-label text-regards">¡hola</label>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <label class="col-form-label text-name">{{ userName }}</label>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-12">
+                <label class="col-form-label text-asesor">Asesor Increyble</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h6 class="card-title titleCard">Consulta de tiquete</h6>
+                        <div class="row">
+                            <div class="col">
+                                <p-inputMask mask="999-9999999999" id="ticket" placeholder="Número Tiquete" [(ngModel)]="dataGlobalService.ticketNumber" name="ticketNumber" required #ticket="ngModel" autocomplete="off" autoFocus="true"></p-inputMask>
+                            </div>
+                            <div class="col">
+                                <input class="form-control form-control-sm text-PlaceHolder text-capitalize" type="text" id="name" [ngClass]="{'is-invalid': (nameCall.errors?.required) && nameCall.touched}" placeholder="Nombre quien llama" [(ngModel)]="dataGlobalService.callName" name="callName"
+                                    required #nameCall="ngModel" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col" *ngIf="localBonus[0].enabled">
+                            <div class="row">
+                                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" id="chkBono" [(ngModel)]="dataGlobalService.isBonus" name="isBonus">
+                                    <label class="custom-control-label" for="chkBono">Consultar bono de cancelación</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-sm btn-color-avianca boton-General" type="submit" [disabled]="!(forma.valid)" [ngClass]="{'btn-secondary': !(forma.valid)}">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

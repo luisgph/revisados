@@ -1,0 +1,173 @@
+@charset "utf-8";
+
+@color-xs : #E4192E;
+@color-s : #C45500;
+@color-m : #A41E2C;
+@color-l : #3A1622;
+@color-xl : #866B4E;
+@color-xxl : #333333;
+@color-na : #515457;
+@color-white : #fff;
+
+
+img {
+    vertical-align: initial;
+    border-style: none;
+    margin-right: 10px;
+}
+
+.col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    text-align: center !important;
+    margin-bottom: 10px;
+}
+
+.content-info{
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    margin: 0px;
+    position: relative;
+
+    span{
+        margin: 0 5px;
+        font-weight: 700;
+    }
+
+}
+.icon{
+        margin-right: 5px !important;
+        font-size: 18px !important;
+        margin-top: 0px !important;
+        width: 35px !important;
+        text-align: center !important;
+}
+
+.btn-moreInfo{
+    right: 15px;
+    font-weight: 700;
+    font-size: 25px;
+    margin-top: -7px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.action-rigth{
+    right: 30px;
+    position: absolute;
+
+    .custom-checkbox .custom-control-label::before{
+        margin-top: -3px !important;
+    }
+
+    .custom-control-label::after{
+        top: 0.5px !important;
+    }
+
+    .custom-control{
+        margin-right: 0px!important;
+    }
+
+}
+
+.content-details{
+    height: auto;
+    background-color: #f9f9f9;
+
+
+    .content-group {
+        margin: 0px !important;
+
+        ul.timeline {
+            list-style-type: none;
+            position: relative;
+        }
+        ul.timeline:before {
+            content: ' ';
+            background: #d4d9df;
+            display: inline-block;
+            position: absolute;
+            left: 29px;
+            width: 2px;
+            height: 100%;
+            z-index: 400;
+        }
+        ul.timeline > li {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        ul.timeline > li:before {
+            content: ' ';
+            background: white;
+            display: inline-block;
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid #367fdc;
+            left: 20px;
+            width: 20px;
+            height: 20px;
+            z-index: 400;
+        }
+
+        .timeline a {
+            color: #000000;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+    }
+}
+
+
+.action-buttons{
+    text-align: right;
+}
+
+.info-coupont{
+    margin-top: 30px !important;
+}
+
+
+.all-coupons-btn{
+    max-width: 40px;
+    margin: 0px 10px;
+}
+
+.badgeXS{
+    background-color: @color-xs;
+    color: @color-white;
+}
+
+.badgeS{
+    background-color: @color-s;
+    color: @color-white;
+}
+
+.badgeM{
+    background-color: @color-m;
+    color: @color-white;
+}
+
+.badgeL{
+    background-color: @color-l;
+    color: @color-white;
+}
+
+.badgeXL{
+    background-color: @color-xl;
+    color: @color-white;
+}
+
+.badgeXXL{
+    background-color: @color-xxl;
+    color: @color-white;
+}
+
+.badgeNA{
+    background-color: @color-na;
+    color: @color-white;
+}
+
+
+

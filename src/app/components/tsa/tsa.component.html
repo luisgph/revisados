@@ -1,0 +1,61 @@
+<section class="content-tsa">
+    <div class="row text-center">
+        <div class="col">
+            <img src="../../../assets/img/TSA-Rojo.svg" class="sizeIcon" alt="">
+            <label class="col-form-label text-title">TSA</label>
+        </div>
+    </div>
+    <div cllas="content-tariffs">
+        <div class="row info-contact">
+            <div class="content-component col-md-10 mx-auto">
+                <div class="content-component ">
+                    <div class="form-group">
+                        <table class="table table-sm table-striped" aria-describedby="">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Fecha nacimiento</th>
+                                    <th scope="col">Género</th>
+                                    <th scope="col">Primer nombre</th>
+                                    <th scope="col">Segundo nombre</th>
+                                    <th scope="col">Apellidos</th>
+                                    <th scope="col">Línea</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let passenger of dataGlobalService.passengerNewReservation; let i = index">
+                                    <td>
+                                        <p-inputMask mask="99aaa99" id="birthday{{ i }}" placeholder="Ej: 01JAN20" [(ngModel)]="passenger.birthDay" name="birthDay" [ngClass]="{'is-invalid': (passengerSurname.invalid) && passengerSurname.touched}" required #birthDayPassenger="ngModel" autoFocus="true"
+                                            styleClass="form-control form-control-sm text-PlaceHolder text-uppercase"></p-inputMask>
+                                    </td>
+                                    <td>
+                                        <select class="form-control form-control-sm" id="gender{{ i }}" [(ngModel)]="passenger.gender" name="gender" [ngClass]="{'is-invalid':gender.invalid  && gender.touched}" required #gender="ngModel">
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                          </select>
+                                    </td>
+                                    <td>
+                                        <input class="form-control form-control-sm text-PlaceHolder text-uppercase" type="text" id="firstname{{ i }}" [ngClass]="{'is-invalid': (passengerFirstName.invalid) && passengerFirstName.touched}" [(ngModel)]="passenger.passengerFirstName" name="passengerFirstName"
+                                            required #passengerFirstName="ngModel">
+                                    </td>
+                                    <td>
+                                        <input class="form-control form-control-sm text-PlaceHolder text-uppercase" type="text" id="secondname{{ i }}" [(ngModel)]="passenger.secondName" name="secondName">
+                                    </td>
+                                    <td>
+                                        <input class="form-control form-control-sm text-PlaceHolder text-uppercase" type="text" id="lastname{{ i }}" [ngClass]="{'is-invalid': (passengerSurname.invalid) && passengerSurname.touched}" [(ngModel)]="passenger.passengerSurname" name="passengerSurname"
+                                            required #passengerSurname="ngModel">
+                                    </td>
+                                    <td class="text-center">
+                                        {{ passenger.passengerLine }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="action-buttons">
+                        <button type="submit" class="btn btn-color-avianca boton-General btn-sm" (click)="saveTSA()">Registrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

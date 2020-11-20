@@ -1,0 +1,65 @@
+<div class="row text-center">
+    <div class="col">
+        <img src="../../../assets/img/Boleto.png" class="sizeIcon" alt="">
+        <label class="col-form-label text-title">boleto</label>
+    </div>
+</div>
+<div class="row info-coupont">
+    <div class="col-md-6 mx-auto">
+        <table class="table table-hover table-striped table-sm " aria-describedby="">
+            <thead>
+                <th scope="col" hidden></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of dataGlobalService.data.couponInfoGroup; let i = index">
+                    <div class="content-info row">
+                        <div class="icon">
+                            <em class="fa fa-plane"></em>
+                            <em class="fa fa-plane fa-rotate-180" *ngIf="item.couponInfoGroup.length > 1 ? true : false"></em>
+                        </div>
+                        <div clas="info-trayect">
+                            <span>{{item.begin}}</span>
+                            <span>-</span>
+                            <span>{{item.finish}}</span>
+                        </div>
+
+                        <div class="action-rigth row">
+                            <div class="btn-moreInfo" href="" (click)="showDetailsTrayect(item)">
+                                <em class="fa fa-angle-down" *ngIf="!item.showDetails"></em>
+                                <em class="fa fa-angle-up" *ngIf="item.showDetails"></em>
+                            </div>
+                            <div class="custom-control custom-checkbox my-1 mr-sm-2" [hidden]="!item.validForChange">
+                                <input type="checkbox" class="custom-control-input" id="chkChangeSegment{{i+1}}" [ngModel]="item.isSelect" (change)="onSelectTrayect(item)" [disabled]="dataGlobalService.disabledSegmentCheckBox">
+                                <label class="custom-control-label" for="chkChangeSegment{{i+1}}"></label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="content-details" *ngIf="item.showDetails">
+                        <div class="content-group row">
+                            <div class="">
+                                <ul class="timeline">
+                                    <li *ngFor="let coupon of item.couponInfoGroup">
+                                        <a>{{coupon.flightInfo.companyDetails.marketingCompany }}{{coupon.flightInfo.flightIdentification.flightNumber }}</a>
+                                        <a>{{ coupon.flightInfo.flightDate.departureDate | format:'formatDate' }} /
+                                        {{ coupon.flightInfo.flightDate.departureTime | format:'formatHour'}}</a><span [ngClass]="item.bundle == 'XS' ? 'badge badgeXS' : item.bundle == 'S' ? 'badge badgeS' : item.bundle == 'M'? 'badge badgeM' : item.bundle == 'L' ? 'badge badgeL' : item.bundle == 'XL' ? 'badge badgeXL': item.bundle == 'XXL' ? 'badge badgeXXL': item.bundle == 'N/A' ? 'badge badgeNA': null">Bundle: {{item.bundle}}</span>
+                                        <p>
+                                            {{coupon.flightInfo.boardPointDetails.trueLocationId }} - {{coupon.flightInfo.offpointDetails.trueLocationId}} &nbsp; &nbsp; Clase : {{coupon.flightInfo.flightIdentification.bookingClass}} &nbsp; &nbsp; Estado: {{coupon.couponInfo.couponDetails.cpnStatus}}
+                                            &nbsp; &nbsp; Farebase: {{item.farebase}}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+        <div class="action-buttons">
+            <button type="button" class="btn btn-sm btn-color-avianca boton-General all-coupons-btn" (click)="selectAllCoupons()" [disabled]="dataGlobalService.disabledSegmentCheckBox" [ngClass]="{'btn-secondary': dataGlobalService.disabledSegmentCheckBox }">
+                <em class="fa fa-check-square-o"> </em>
+            </button>
+            <button type="button " class="btn btn-sm btn-color-avianca boton-General" (click)="selectCoupons()" [disabled]="dataGlobalService.disabledSegment" [ngClass]="{'btn-secondary': dataGlobalService.disabledSegment }">Aplicar</button>
+        </div>
+    </div>
+</div>

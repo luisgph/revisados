@@ -1,0 +1,28 @@
+<div class="content-notes-component">
+    <button type="button" class="btn btn-primary btn-open" (click)="openNotes()">
+    <em class="fa fa-address-book-o fa-2x"></em>
+  </button>
+
+    <div class="content-note card" *ngIf="showNotes">
+        <div class="header">
+            <span> Notas SAR </span>
+            <em class="fa fa-window-minimize icon-minimize" aria-hidden="true" (click)="openNotes()"></em>
+        </div>
+        <div class="content">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let item of dataGlobalService.userNotes">{{item}}</li>
+            </ul>
+        </div>
+        <form id="notesform" (ngSubmit)="addNote()" #forma="ngForm">
+            <div class="footer">
+                <div class="input-group">
+                    <input type="text" class="form-control" aria-label="texto libre para agregar notas rapidas" [(ngModel)]="noteText" name="noteText" #message="ngModel">
+                    <div class="input-group-append">
+                        <button class="btn btn-add" type="submit"> Agregar </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

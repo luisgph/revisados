@@ -1,0 +1,41 @@
+<section>
+    <div class="row text-center content-title">
+        <div class="col">
+            <img src="../../../assets/img/Vuelo.png" class="sizeIcon" alt="">
+            <label class="col-form-label text-title">Selección de Vuelos </label>
+        </div>
+    </div>
+
+    <div class="content-section col-md-10 mx-auto">
+        <p-tabView class="PrimeType tabs-Search" [activeIndex]="stepIndex" (onChange)="handleChange($event)">
+            <p-tabPanel header="Consulta de vuelos">
+                <app-search-flights (isSuccessDatafligth)="isSuccessDatafligth($event)" (cleanAndDesabledOptions)="cleanAndDesabledOptions()"></app-search-flights>
+                <app-coupons-confirmed-change (cleanAndDesabledOptions)="cleanAndDesabledOptions()"></app-coupons-confirmed-change>
+
+            </p-tabPanel>
+            <p-tabPanel header="Disponibilidad" [disabled]="disableAvailability">
+                <app-available-flight-coupons (isSuccessCoupon)="isSuccessCoupon()"></app-available-flight-coupons>
+            </p-tabPanel>
+        </p-tabView>
+        <div class="text-center" *ngIf="stepIndex == 0">
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <div class="custom-control custom-checkbox mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" id="customControlAutosizing1" [(ngModel)]="dataGlobalService.isRebooking" [disabled]="dataGlobalService.serviceArrayFlightAvailable.length == 0" (change)="isRebooking()">
+                        <label class="custom-control-label" for="customControlAutosizing1">Mejor tarifa</label>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="custom-control custom-checkbox mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" id="customControlAutosizing2" [(ngModel)]="dataGlobalService.isServiceFee" [disabled]="dataGlobalService.serviceArrayFlightAvailable.length == 0">
+                        <label class="custom-control-label" for="customControlAutosizing2">Service Fee</label>
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <button type="button" class="btn btn-sm btn-color-avianca" (click)="quoteFlight()" [disabled]="dataGlobalService.serviceArrayFlightAvailable.length == 0" [ngClass]="{'btn-secondary': dataGlobalService.serviceArrayFlightAvailable.length == 0 }">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

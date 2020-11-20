@@ -1,0 +1,156 @@
+<div class="row text-center">
+    <div class="col">
+        <img src="../../../assets/img/resumen.svg" class="sizeIconTitle" alt="">
+        <label class="col-form-label text-title">Resumen</label>
+    </div>
+</div>
+<div cllas="content-tariffs">
+    <div class="content-component col-md-10 mx-auto">
+
+        <div class="content-loading" *ngIf="dataGlobalService.dataNewQuote == null">
+            <span></span>
+        </div>
+
+        <div class="row" *ngIf="dataGlobalService.dataNewQuote != null">
+            <div class="col content-component">
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped" aria-describedby="">
+                        <thead>
+                            <tr>
+                                <th scope="col">Resumen de itinerario en reserva</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">
+                                    PASAJEROS
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let passenger of dataGlobalService.passengersInformation">
+                                <td>{{passenger.passengerFirstName}} {{passenger.passengerSurname}} <strong>({{passenger.passengerType}})</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped" aria-describedby="">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan=4>
+                                    ITINERARIO
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Origen</th>
+                                <th scope="col">Destino</th>
+                                <th scope="col">Fecha / Hora</th>
+                                <th scope="col">Clase</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let segment of reservationSegmentInfo">
+                                <td>{{ segment.origin }}</td>
+                                <td>{{ segment.destination }}</td>
+                                <td>{{ segment.fligthDate | format:'formatDate' }} / {{ segment.fligthHour | format:'formatHour'}}</td>
+                                <td>{{ segment.rateClass }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col content-component" *ngIf="dataGlobalService.dataNewQuote != null">
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped" aria-describedby="">
+                        <thead>
+                            <th scope="col" colspan="3">Resumen de la Cotización</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Valor por todos los pasajeros</td>
+                                <th scope="col">{{ dataGlobalService.dataNewQuote.currency }}</th>
+                                <th scope="col">{{ dataGlobalService.dataNewQuote.totalValue | number }}</th>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <accordion [isAnimated]="true">
+                        <accordion-group heading="Diferencia de tarifa" class="titleChange">
+                            <table class="table table-sm table-striped" aria-describedby="">
+                                <thead>
+                                    <th scope="col">Tipo de Pasajero</th>
+                                    <th scope="col">Moneda</th>
+                                    <th scope="col">Valor</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of dataGlobalService.dataNewQuote.faresByPassengerType">
+                                        <td>{{ item.itemType }}</td>
+                                        <td>{{ item.currency }}</td>
+                                        <td>{{ item.itemValue | number }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </accordion-group>
+
+                        <accordion-group heading="Diferencia de impuestos" class="titleChange">
+                            <table class="table table-sm table-striped" aria-describedby="">
+                                <thead>
+                                    <th scope="col">Tipo de Pasajero</th>
+                                    <th scope="col">Moneda</th>
+                                    <th scope="col">Valor</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of dataGlobalService.dataNewQuote.taxesByPassengerType">
+                                        <td>{{ item.itemType }}</td>
+                                        <td>{{ item.currency }}</td>
+                                        <td>{{ item.itemValue | number }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </accordion-group>
+
+                        <accordion-group heading="Penalidad" class="titleChange">
+                            <table class="table table-sm table-striped" aria-describedby="">
+                                <thead>
+                                    <th scope="col">Tipo de Pasajero</th>
+                                    <th scope="col">Moneda</th>
+                                    <th scope="col">Valor</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of dataGlobalService.dataNewQuote.penaltiesByPassengerType">
+                                        <td>{{ item.itemType }}</td>
+                                        <td>{{ item.currency }}</td>
+                                        <td>{{ item.itemValue | number}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </accordion-group>
+
+                        <accordion-group heading="Penalidad impuestos" class="titleChange">
+                            <table class="table table-sm table-striped" aria-describedby="">
+                                <thead>
+                                    <th scope="col">Tipo de Pasajero</th>
+                                    <th scope="col">Moneda</th>
+                                    <th scope="col">Valor</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of dataGlobalService.dataNewQuote.taxPenaltyByPassengerType">
+                                        <td>{{ item.itemType }}</td>
+                                        <td>{{ item.currency }}</td>
+                                        <td>{{ item.itemValue | number }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </accordion-group>
+                    </accordion>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer" *ngIf="dataGlobalService.dataNewQuote != null">
+            <button type="submit " class="btn btn-sm btn-secondary pull-right" (click)="clean()">Ignorar y regresar</button>
+            <button type="submit " class="btn btn-sm btn-color-avianca pull-right" (click)="GenerateTstAndSavePnr()">Realizar cambio</button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+@color-totals :  #606060;
+@color-base-avianca :#df0817;
+@color-blanco :  #ffffff;
+.fa-space-shuttle{
+    color: @color-base-avianca !important;
+}
+
+
+
+.content-component{
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+
+    .content-info .content-options{
+        justify-content: center;
+
+        button{
+            background-color: #a8a8a8;
+            color: @color-blanco;
+            margin: 15px;
+        }
+
+        .active-btn{
+            background-color: @color-base-avianca;
+            color: @color-blanco;
+        }
+    }
+
+
+    .section-info{
+        border: #7f7f7f 1px solid;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+
+    .total{
+        font-weight: 700;
+    }
+}
+
+
+.cost-details{
+    border-left: 1px solid #0000002b;
+}
+.total-change{
+    font-size: 35px;
+    text-align: center;
+    font-weight: 700;
+    color :@color-totals;
+    .currency{
+        font-size: 10px !important;
+    }
+
+    .Farebase{
+        text-align-last: right;
+        font-size: 15px;
+    }
+
+    .FareTotal{
+        text-align-last: right;
+        font-size: 25px;
+    }
+}
+
+.total{
+    font-size: 20px;
+    font-weight: 700;
+    color: @color-totals ;
+}
+
+.total-table{
+    th, td{
+        padding: 4px 0.75rem !important;
+    }
+}
+
+.right-align{
+    text-align: right;
+}
+
+img {
+    vertical-align: initial;
+    border-style: none;
+    margin-right: 10px;
+}
+
+
+.content-actions{
+    width: 90%;
+    margin: 0 auto;
+    text-align: right;
+
+    button{
+        margin: 0px 3px;
+    }
+}
+
+.card-price {
+    font-size: 3rem;
+    margin: 0;
+  }
+
+  .card-price .period {
+    font-size: 0.8rem;
+  }

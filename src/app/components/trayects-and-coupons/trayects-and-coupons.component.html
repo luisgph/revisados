@@ -1,0 +1,48 @@
+<table class="table table-striped" *ngIf="data" aria-describedby="">
+    <thead>
+        <th scope="col" hidden></th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data; let i = index">
+            <div class="content-info row">
+                <div class="icon">
+                    <em class="fa fa-plane"></em>
+                    <em class="fa fa-plane fa-rotate-180" *ngIf="item.couponInfoGroup.length > 1 ? true : false"></em>
+                </div>
+                <div clas="info-trayect">
+                    <span>{{item.begin}}</span>
+                    <span>-</span>
+                    <span>{{item.finish}}</span>
+                </div>
+
+                <div class="action-rigth row">
+                    <div class="btn-moreInfo" href="" (click)="showDetailsTrayect(item)">
+                        <em class="fa fa-angle-down" *ngIf="!item.showDetails"></em>
+                        <em class="fa fa-angle-up" *ngIf="item.showDetails"></em>
+                    </div>
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" id="chkChangeSegment{{i+1}}" [ngModel]="item.isSelect" (change)="onSelectTrayect(item)" [disabled]="disabledSegment || item.disabledSegment">
+                        <label class="custom-control-label" for="chkChangeSegment{{i+1}}"></label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="content-details" *ngIf="item.showDetails">
+                <div class="content-group row">
+                    <div class="">
+                        <ul class="timeline">
+                            <li *ngFor="let coupon of item.couponInfoGroup">
+                                <a>{{coupon.flightInfo.companyDetails.marketingCompany }}{{coupon.flightInfo.flightIdentification.flightNumber }}</a>
+                                <a class="float-right">{{ coupon.flightInfo.flightDate.departureDate | format:'formatDate' }} /
+                                    {{ coupon.flightInfo.flightDate.departureTime | format:'formatHour'}}</a>
+                                <p>
+                                    {{coupon.flightInfo.boardPointDetails.trueLocationId }} - {{coupon.flightInfo.offpointDetails.trueLocationId}} &nbsp; &nbsp; Clase : {{coupon.flightInfo.flightIdentification.bookingClass}} &nbsp; &nbsp; Estado: {{coupon.couponInfo.couponDetails.cpnStatus}}
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </tr>
+    </tbody>
+</table>

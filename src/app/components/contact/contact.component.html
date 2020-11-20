@@ -1,0 +1,72 @@
+<section class="content-contact">
+    <div class="row text-center">
+        <div class="col">
+            <img src="../../../assets/img/ContactoR.svg" class="sizeIcon" alt="">
+            <label class="col-form-label text-title">datos del contacto</label>
+        </div>
+    </div>
+    <form #forma="ngForm">
+        <div cllas="content-tariffs">
+            <div class="row info-contact">
+                <div class="content-component col-md-8 mx-auto">
+                    <div class="content-component ">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail">Email</label>
+                                <input type="email" #firstEmail="ngModel" [class.is-invalid]="firstEmail.invalid && firstEmail.touched" class="form-control form-control-sm" id="inputEmail" [(ngModel)]="email" name="email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                            </div>
+                            <div *ngIf="firstEmail.errors && (firstEmail.invalid || firstEmail.touched)">
+                                <small class="text-danger" *ngIf="firstEmail.errors.pattern">Por favor ingrese un Email válido</small>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <label for="inputMovil">Movil</label>
+                                <select id="selectMobile" class="form-control form-control-sm" [(ngModel)]="iataMobile" name="iataMobile">
+                                        <option selected>IATA Ciudad</option>
+                                        <option *ngFor="let iata of listIataMobile" [value]="iata.codeIataCity">{{ iata.codeIataCity }} - ({{ iata.city }})
+                                        </option>
+                                     </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputIndicativoMovil">&nbsp;</label>
+                                <input type="text" class="form-control form-control-sm" id="inputIndicativoMovil" placeholder="Indicativo" [(ngModel)]="mobileIndicative" name="mobileIndicative" (keypress)="numberOnly($event)" maxlength="3" [class.is-invalid]="indicative.invalid && indicative.touched"
+                                    required #indicative="ngModel">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="inputNumeroMovil">&nbsp;</label>
+                                <input type="text" class="form-control form-control-sm" id="inputNumeroMovil" placeholder="Número" [(ngModel)]="mobileNumber" name="mobileNumber" (keypress)="numberOnly($event)" [class.is-invalid]="number.invalid && number.touched" #number="ngModel" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                    <input type="checkbox" class="custom-control-input" id="chkFixed" (click)="selectFixed()">
+                                    <label class="custom-control-label" for="chkFixed">Fijo</label>
+                                </div>
+                                <select id="selectFixed" class="form-control form-control-sm" [(ngModel)]="iataFixed" name="iataFixed" [disabled]="disabledFixed">
+                                        <option selected>IATA Ciudad</option>
+                                        <option *ngFor="let iata of listIataFixed" [value]="iata.codeIataCity">{{ iata.codeIataCity }} - ({{ iata.city }})
+                                        </option>
+                                    </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputIndicativoFijo">&nbsp;</label>
+                                <input type="text" class="form-control form-control-sm" id="inputIndicativoFijo" placeholder="Indicativo + Cod. área" [(ngModel)]="fixedIndicative" name="fixedIndicative" [disabled]="disabledFixed" (keypress)="numberOnly($event)" maxlength="5">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="inputNumeroFijo">&nbsp;</label>
+                                <input type="text" class="form-control form-control-sm" id="inputNumeroFijo" placeholder="Número" [(ngModel)]="fixedNumber" name="fixedNumber" [disabled]="disabledFixed" (keypress)="numberOnly($event)">
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button type="submit" class="btn btn-color-avianca boton-General btn-sm" [disabled]="!(forma.valid)" [ngClass]="{'btn-secondary': !(forma.valid)}" (click)="saveContact()">Registrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

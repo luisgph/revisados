@@ -1,0 +1,662 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*impors libs less, css ..  */
+
+
+/* Variable settings for application base colors.*/
+@color-base-avianca :#df0817;
+@color-white : #fff;
+@color-not-active :  #bfbfbf;
+@color-black : black;
+@color-xs : #E4192E;
+@color-s : #C45500;
+@color-m : #A41E2C;
+@color-l : #3A1622;
+@color-xl : #866B4E;
+@color-xxl : #333333;
+@color-na : #515457;
+
+
+/* config @medias for the Responsive application */
+@mobile:      ~"only screen and (max-width: 529px)";
+@tablet:      ~"only screen and (min-width: 530px) and (max-width: 949px)";
+@desktop:     ~"only screen and (min-width: 950px) and (max-width: 1370px)";
+@desktop-xl:  ~"only screen and (min-width: 1370px)";
+
+
+.bg-login {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("assets/img/Login.jpg") repeat center;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+.bg-site {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("assets/img/backgroundSite.jpg") repeat center;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+.login-register {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+    padding: 10% 0;
+    position: fixed;
+}
+
+.login-box {
+    width: 499px;
+    height: 429px;
+}
+
+.login-box .footer {
+    width: 100%;
+    left: 0px;
+    right: 0px;
+}
+
+.login-box .social {
+    display: block;
+    margin-bottom: 30px;
+}
+
+#recoverform {
+    display: none;
+}
+
+.login-sidebar {
+    padding: 0px;
+    margin-top: 0px;
+}
+
+.login-sidebar .login-box {
+    right: 0px;
+    position: absolute;
+    height: 100%;
+}
+
+body .ui-inputtext{
+    height: calc(1.5em + 0.5rem + 2px);
+    // height: calc(1.5em + 0.75rem + 2px);
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+    // padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    // font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    // color: #495057;
+    background-color: @color-white;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.2rem;
+    // border-radius: 5px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out ;
+    margin-right: 8px;
+    font-family: 'Century Gothic';
+    color: #707070;
+
+
+
+
+
+}
+
+.main-container {
+    margin-top: 20px;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+  }
+
+  .btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+  }
+
+  .btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+  }
+
+  .custom-control-input:checked ~ .custom-control-label::before {
+    color: @color-black;
+    border-color: @color-base-avianca;
+    background-color: @color-base-avianca;
+}
+
+body .ui-inputtext.ng-dirty.ng-invalid{
+    border: 1px solid @color-base-avianca;
+}
+
+.btn-color-avianca{
+    background-color: @color-base-avianca;
+    color: @color-white;
+    border-color: @color-base-avianca;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 100px;
+    background-color: #f5f5f5;
+    margin-bottom: 0px;
+  }
+
+
+  .modal-dialog{
+      min-width: 60%;
+      background-color: white !important;
+      border-radius: 5px;
+  }
+
+  .modal-content {
+    display: inherit;
+  }
+
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.titleChange{
+    margin: 5px 0px !important;
+    .card-header {
+        padding: 0px !important;
+    }
+    .card{
+        margin: 0px!important;
+    }
+}
+
+.modal-body {
+    max-height: 80% !important;
+}
+
+.borderRadius{
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+}
+
+
+body p-inputmask.ng-dirty.ng-invalid > .ui-inputtext
+ {
+  border: 1px solid @color-base-avianca;
+}
+
+.bg-card{
+    background-color: #e9e9ea;
+}
+
+.av-loading{
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    background-image: url('./assets/img/ring.gif');
+    background-size: cover;
+  }
+
+  .custom-class {
+    top: 0;
+    z-index: 2002;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px;
+  }
+
+
+  .text-PlaceHolder {
+    font-family: 'Century Gothic';
+    color: #707070;
+}
+
+.titleCard{
+    font-family: 'Century Gothic';
+    font-weight: bold;
+    color: #606060;
+    font-size: 37px;
+}
+
+.text-title
+{
+        height: 1px;
+        color: @color-base-avianca;
+        font-family: "Century Gothic";
+        font-size: 35px;
+        font-weight: bold;
+        text-transform: capitalize;
+}
+
+// .boton-General{
+//     // margin-top: 10px;
+//     // width: 129px;
+// }
+
+.tabs-Search a{
+    background-image: none !important;
+}
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active, body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active, body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active, body .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active{
+    background-color: @color-base-avianca !important;
+    border: 1px solid @color-base-avianca !important;
+}
+
+// -----------------    Steps Style  ------------------------------ //
+
+.content-steps{
+    position: absolute;
+    top: 25vh !important;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    .nav{
+        z-index: 10;
+        margin-top: -60px;
+    }
+}
+
+.tab-content{
+    width: 99%;
+    height: 70vh;
+    top: -80px;
+    margin-left: 1%;
+    position: relative;
+    display: flex;
+}
+
+.tab-content > .tab-pane {
+    width: 100%;
+    height: 100%;
+    top: -80px;
+    margin-left: -180px;
+    padding-left: 200px;
+}
+
+.content-element {
+    min-height: 70vh;
+    max-height: 80vh;
+    margin-left: -1.8%;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: @color-white;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    background-image: url("../src/assets/img/backgroun-tabs.png");
+    background-size: 65px 80%;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position-x: 97%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.nav-pills  .nav-link{
+    border-top-right-radius: 35px;
+    border-bottom-right-radius:  35px;
+    margin: 0.5px;
+    box-shadow: 0.8px 1px #00000069;
+}
+
+.config-tabs{
+    width: 90px;
+    height: 60px !important;
+    position: absolute;
+}
+
+.nav-item {
+    height: 62px !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+    .config-tabs;
+    background-color: @color-base-avianca;
+}
+
+.nav-pills .nav-link.disabled, .nav-pills .show > .nav-link{
+    background-color: @color-not-active;
+}
+
+.nav-pills .nav-link, .nav-pills .show > .nav-link{
+    .config-tabs;
+    background-color: @color-base-avianca;
+}
+
+.config-menu-icons{
+    z-index: 10;
+    background-repeat: no-repeat;
+    background-position-x: 35%;
+    background-position-y: 50%;
+}
+
+.passengers{
+    a{
+        background-image: url('../src/assets/img/select_people.svg');
+        background-size: 47px 46px;
+        .config-menu-icons;
+    }
+}
+
+.coupons{
+    a{
+        background-image: url('../src/assets/img/select-coupons.svg');
+        background-size: 56px 33px;
+        .config-menu-icons;
+    }
+}
+
+.flight{
+    a{
+        background-image: url('../src/assets/img/flight-selection.svg');
+        background-size: 44px 42px;
+        .config-menu-icons;
+    }
+}
+
+.quote{
+    a{
+        background-image: url('../src/assets/img/select-change.svg');
+        background-size: 46px 44px;
+        .config-menu-icons;
+    }
+}
+
+.summary{
+    a{
+        background-image: url('../src/assets/img/select-sumary.svg');
+        background-size: 53px 41px;
+        .config-menu-icons;
+    }
+}
+
+.contact{
+    a{
+        background-image: url('../src/assets/img/Identificación.svg');
+        background-size: 53px 41px;
+        .config-menu-icons;
+    }
+}
+
+.tsa{
+    a{
+        background-image: url('../src/assets/img/tsa.svg');
+        background-size: 53px 41px;
+        .config-menu-icons;
+    }
+
+}
+
+.bonus{
+    a{
+        background-image: url('../src/assets/img/bono.svg');
+        background-size: 53px 41px;
+        .config-menu-icons;
+    }
+
+}
+
+.nav-link.active{
+    position : absolute;
+    right: 94px;
+    animation: slider-left-tab 1s ease-out;
+}
+
+.tab-pane.active {
+    animation: slide-left-content-tab 1s ease-out;
+}
+
+@keyframes slide-left-content-tab {
+    0% { opacity: 0; transform: translateX(-100%); }
+    100% { opacity: 1; transform: translateX(0%); }
+}
+
+@keyframes slider-left-tab{
+
+    0% {
+        position : absolute;
+        right: 100%;
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        position : absolute;
+        right: 70px;
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+
+.sizeIcon{
+    width: 32px;
+    height: 30px;
+}
+
+.content-loading{
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    min-height: 60vh;
+
+    span{
+        line-height: 50vh;
+        font-size: 3em;
+        opacity: 0.2;
+    }
+}
+
+//--------------------------- style scroll ------------------------//
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: @color-base-avianca;
+    border-radius: 10px;
+    height: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+}
+
+//--------------------------- End style scroll ------------------------//
+
+.radio-active{
+    background-color: @color-base-avianca !important;
+    color : @color-white !important;
+}
+
+
+body .ui-paginator .ui-paginator-pages .ui-paginator-page,  body .ui-paginator .ui-paginator-first{
+    background-image: none !important;
+}
+
+body .ui-paginator {
+    border: 0px solid #c8c8c8 !important;
+}
+
+body .ui-paginator .ui-paginator-first, body .ui-paginator .ui-paginator-prev, body .ui-paginator .ui-paginator-next, body .ui-paginator .ui-paginator-last {
+    background-image: none !important;
+}
+
+.sizeBundle{
+    width: 51px;
+    height: 51px;
+}
+
+.sizeIconBriefcase{
+    width: 23px;
+    height: 20px;
+}
+
+.sizeIconBag{
+    width: 25px;
+    height: 47px;
+}
+
+.sizeIconChair{
+    width: 33px;
+    height: 47px;
+}
+
+.sizeIconChaiStar{
+    width: 33px;
+    height: 47px;
+}
+
+.sizeIconCalendar{
+    width: 22px;
+    height: 22px;
+}
+
+.sizeIconReturnMoney{
+    width: 35px;
+    height: 22px;
+}
+
+.sizeIconChange{
+    width: 29px;
+    height: 32px;
+}
+
+.sizeIconVIP{
+    width: 32px;
+    height: 20px;
+}
+
+.sizeIconDeparture{
+    width: 37px;
+    height: 25px;
+}
+
+.sizeIconLifeMiles{
+    width: 33px;
+    height: 21px;
+}
+
+.btn:hover {
+    color: white;
+    text-decoration: none;
+}
+
+
+//  -------------Styles step flight
+
+body .ui-tabview .ui-tabview-panels{
+    width: 100%;
+    max-height: 48  vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.theme-red .bs-datepicker-head {
+    background-color: @color-base-avianca !important;
+}
+
+.theme-red .bs-datepicker-body table td span.selected, .theme-red .bs-datepicker-body table td.selected span, .theme-red .bs-datepicker-body table td span[class*="select-"]:after, .theme-red .bs-datepicker-body table td[class*="select-"] span:after {
+    background-color: @color-base-avianca !important;
+}
+
+
+.btn:focus, .btn.focus{
+    box-shadow : 0 0 0 0.2rem rgba(158, 158, 158, 0.25)
+}
+
+.custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
+    background-color: @color-base-avianca !important;
+    opacity: 0.5;
+}
+
+.btn-link {
+    color: #df0817;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.ui-dropdown {
+    display: block;
+    min-width: 100%;
+}
+
+.bundleXS{
+    background-color: @color-xs;
+    color: @color-white;
+}
+
+
+.bundleS{
+    background-color: @color-s;
+    color: @color-white;
+}
+
+.bundleM{
+    background-color: @color-m;
+    color: @color-white;
+}
+
+.bundleL{
+    background-color: @color-l;
+    color: @color-white;
+}
+
+.bundleXL{
+    background-color: @color-xl;
+    color: @color-white;
+}
+
+.bundleXXL{
+    background-color: @color-xxl;
+    color: @color-white;
+}
+
+.bundleNA{
+    background-color: @color-na;
+    color: @color-white;
+}

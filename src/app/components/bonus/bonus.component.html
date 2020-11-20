@@ -1,0 +1,62 @@
+<div class="row text-center">
+    <div class="col">
+        <img src="../../../assets/img/Boleto.png" class="sizeIcon" alt="">
+        <label class="col-form-label text-title">bono</label>
+    </div>
+</div>
+<div class="row info-coupont" *ngIf="dataGlobalService.isBonus">
+    <div class="col-md-6 mx-auto">
+        <table class="table table-sm" aria-describedby="">
+            <thead>
+                <th scope="col" hidden></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of dataGlobalService.dataBonus.passengersBonusInfo; let i = index">
+                    <div class="content-info row">
+                        <div class="backgroundTitle">
+                            <span>{{ item.firstName }} {{ item.surName }} </span>
+                        </div>
+
+                        <div class="action-rigth row">
+                            <div class="backgroundTitle">
+                                <span>$ {{ item.totalValue  | number }}<span class="currency">/{{ dataGlobalService.dataBonus.currency }}</span></span>
+                            </div>
+                            <div class="btn-moreInfo" href="" (click)="showDetailsTrayect(item)">
+                                <em class="fa fa-angle-down" *ngIf="!item.showDetails"></em>
+                                <em class="fa fa-angle-up" *ngIf="item.showDetails"></em>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-details" *ngIf="item.showDetails">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col" hidden></th>
+                                    <th scope="col" hidden></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$ {{item.taxesValue | number}}</td>
+                                    <td>Impuesto</td>
+                                </tr>
+                                <tr>
+                                    <td>$ {{item.fareValue | number}}</td>
+                                    <td>Tarifa</td>
+                                </tr>
+                                <tr>
+                                    <td>$ {{item.otherServicesValue | number}}</td>
+                                    <td>Otros servicios</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">$ {{item.totalValue | number}}</th>
+                                    <th>Total ({{ dataGlobalService.dataBonus.currency }})</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

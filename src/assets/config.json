@@ -1,0 +1,23 @@
+{
+    "dev":{
+        "uri_api" :"https://app-apisar-v1-dev-crd-hd.azurewebsites.net/api/",
+        "clientId" : "59cd7a41-d9c5-4f94-9bc6-2bb5da87410a",
+        "production" : false
+    },
+    "uat":{
+        "uri_api" :"https://app-apisar-v1-uat-crd-hd.azurewebsites.net/api/",
+        "clientId" : "59cd7a41-d9c5-4f94-9bc6-2bb5da87410a",
+        "production" : false
+    },
+    "tng": {
+        "uri_api" :"https://app-apisar-v1-tng-crd-hd.azurewebsites.net/api/",
+        "clientId" : "59cd7a41-d9c5-4f94-9bc6-2bb5da87410a",
+        "production" : false
+    }, 
+    "pro":{
+        "uri_api" :"https://app-apisar-v1-pro-crd-hd.azurewebsites.net/api/",
+        "clientId" : "59cd7a41-d9c5-4f94-9bc6-2bb5da87410a",
+        "production" : true
+    }
+
+}

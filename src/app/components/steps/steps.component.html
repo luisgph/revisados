@@ -1,0 +1,50 @@
+<tabset [vertical]="true" type="pills" class="content-steps" #staticTabs>
+
+    <tab customClass="passengers">
+        <div class="content-element">
+            <app-passengers (selectTab)="selectTab($event)"></app-passengers>
+        </div>
+    </tab>
+
+    <tab customClass="coupons">
+        <div class="content-element">
+            <app-coupons (selectTab)="selectTab($event)"></app-coupons>
+        </div>
+    </tab>
+
+    <tab customClass="flight">
+        <div class="content-element">
+            <app-flights (selectTab)="selectTab($event)" (disableOptions)="disableOptionsQuotation()"></app-flights>
+        </div>
+    </tab>
+
+    <tab customClass="quote">
+        <div class="content-element">
+            <app-tariffs #tariffsComponent (selectTab)="selectTab($event)"></app-tariffs>
+        </div>
+    </tab>
+
+    <tab customClass="summary">
+        <div class="content-element">
+            <app-summary #summaryComponent (selectTab)="selectTab($event)"></app-summary>
+        </div>
+    </tab>
+
+    <tab customClass="contact">
+        <div class="content-element">
+            <app-contact (selectTab)="selectTab($event)"></app-contact>
+        </div>
+    </tab>
+
+    <tab customClass="tsa">
+        <div class="content-element">
+            <app-tsa (selectTab)="selectTab($event)"></app-tsa>
+        </div>
+    </tab>
+
+    <tab customClass="bonus" [disabled]="dataGlobalService.stepBonus">
+        <div class="content-element">
+            <app-bonus (selectTab)="selectTab($event)"></app-bonus>
+        </div>
+    </tab>
+</tabset>

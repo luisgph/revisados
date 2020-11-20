@@ -1,0 +1,9 @@
+<ng-template #customLoadingTemplate>
+    <div class="custom-class">
+        <div class="av-loading"></div>
+    </div>
+</ng-template>
+<ngx-loading [show]="dataGlobalService.loading" [template]="customLoadingTemplate">
+</ngx-loading>
+<router-outlet class="bg-site"></router-outlet>
+<app-footer></app-footer>

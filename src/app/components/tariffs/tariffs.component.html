@@ -1,0 +1,133 @@
+<div cllas="content-tariffs">
+    <div class="row text-center">
+        <div class="col">
+            <img src="../../../assets/img/Tarifas.png" class="sizeIcon" alt="">
+            <label class="col-form-label text-title">tarifas</label>
+        </div>
+    </div>
+
+    <div class="content-component col-md-11 mx-auto">
+        <div class="content-component ">
+            <div class="content-info" [hidden]="viewHistory">
+                <div class="content-options row">
+                    <button type="button" class="btn btn-sm btn-options" *ngFor="let option of dataGlobalService.fareBundles;" [ngClass]="{'active-btn' : option.isSelect}" (click)="onSelectTariff(option)">Opción {{option.optionLineNumber}}</button>
+                </div>
+                <div class="section-info row" *ngIf="showData != null">
+                    <div class="flights-detals col-8">
+                        <table class="table table-sm table-striped" aria-describedby="Table for routings selection">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Ruta</th>
+                                    <th scope="col">Vuelo </th>
+                                    <th scope="col">Clase</th>
+                                    <th scope="col">Fecha </th>
+                                    <th scope="col">Hora </th>
+                                    <th scope="col">Bundle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of showData.flightList">
+                                    <td>{{item.departure}} - {{item.arrive}}</td>
+                                    <td>{{item.flishtNumber}}</td>
+                                    <td>{{item.bookingClass}}</td>
+                                    <td>{{item.flightDate | format:'formatDate' }}</td>
+                                    <td>{{item.flightHour | format:'formatHour'}}</td>
+                                    <td>{{item.bundle}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cost-details col-4">
+                        <div class="total-change">
+                            <div class="FareTotal">
+                                <span> Valor total x pasajero:</span>
+                            </div>
+
+                            <div class="FareTotal">
+                                <span> ${{showData.totalFare  | number}}  <span class="currency"> /{{showData.currency}}</span></span>
+                            </div>
+
+                            <div class="Farebase">
+                                <span>Base: ${{showData.basicFare  | number}} <span class="currency"> /{{showData.basicFareCurrency}}</span></span>
+                            </div>
+                        </div>
+                        <table class="table total-table" aria-describedby="">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Moneda</th>
+                                    <th scope="col" class="right-align">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of showData.taxes" class="td-totals">
+                                    <td [ngClass]="{'total' : item.isTotal}">{{item.taxCode}}</td>
+                                    <td class="right-align" [ngClass]="{'total' : item.isTotal}">$ {{item.taxValue | number}} /{{item.currency}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="animated bounceInLeft" *ngIf="viewHistory">
+                <div class="col-md-11 mx-auto content-table">
+                    <h6 class="card-price text-center">${{fareTotalHistory | number }}<span class="period">/{{fareTotalCurrencyHistory}}</span></h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped" aria-describedby="">
+                            <thead>
+                                <tr>
+                                    <th scope="col" colspan=4>
+                                        ITINERARIO
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Origen</th>
+                                    <th scope="col">Destino</th>
+                                    <th scope="col">Fecha / Hora</th>
+                                    <th scope="col">Clase</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let segment of segmentsHistory">
+                                    <td>{{ segment.origin }}</td>
+                                    <td>{{ segment.destination }}</td>
+                                    <td>{{ segment.dateFlight | format:'formatDate' }} / {{ segment.hourFlight | format:'formatHour'}}
+                                    </td>
+                                    <td>{{ segment.fareClass }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped" aria-describedby="">
+                            <thead>
+                                <tr>
+                                    <th scope="col" colspan=2>
+                                        IMPUESTOS
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Moneda</th>
+                                    <th scope="col">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let taxes of taxesHistory">
+                                    <th scope="row">{{ taxes.currency }}</th>
+                                    <td>${{ taxes.taxValue | number }} - {{ taxes.taxCode }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="content-actions" *ngIf="showData != null">
+            <button type="button" class="btn btn-sm btn-color-avianca" (click)="viewHistory = !viewHistory;viewHistoryButton = !viewHistoryButton" [hidden]="!viewHistory">Ver Tarifas</button>
+            <button type="button" class="btn btn-sm btn-color-avianca" (click)="viewHistory = !viewHistory;viewHistoryButton = !viewHistoryButton" [hidden]="viewHistoryButton"> Historico</button>
+            <button type="button" class="btn btn-sm btn-color-avianca" [hidden]="viewHistory" (click)="continueSteps()"> Cotizar </button>
+
+        </div>
+    </div>
+</div>

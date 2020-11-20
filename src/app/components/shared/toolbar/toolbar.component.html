@@ -1,0 +1,21 @@
+<nav class="navbar navbar-light">
+    <img src="./assets/img/logo.svg" class="sizeLogo" alt="...">
+    <div class="content-dynamic row" *ngIf="numberTicket && callName">
+        <div>
+            <img src="./assets/img/call.svg" alt="" />
+            <span class="text-capitalize">{{ callName }}</span>
+        </div>
+        <span class="split">|</span>
+        <div>
+            <img src="./assets/img/countryTicket.svg" alt="" />
+            <span>{{ countryTicket }}</span>
+        </div>
+        <span class="split">|</span>
+        <div>
+            <img src="./assets/img/boleto.svg" alt="" />
+            <span>{{ numberTicket }}</span>
+        </div>
+
+    </div>
+    <button class="btn btn-color-avianca btn-sm boton-General" type="button" (click)="logOut()">Cerrar sesión</button>
+</nav>

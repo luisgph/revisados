@@ -1,0 +1,58 @@
+<section class="content-coupons-confirmed card" *ngIf="dataGlobalService.serviceArrayFlightAvailable.length > 0">
+    <label class="title-content"> Cupos Confirmados </label>
+    <div class="content-table">
+        <table class="table table-striped table-sm" aria-describedby="">
+            <thead>
+                <th scope="col" hidden></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of dataGlobalService.serviceArrayFlightAvailable; let i = index">
+                    <div class="content-info row {{ item.classBundle }}">
+                        <div class="icon">
+                            <em class="fa fa-plane"></em>
+                            <em class="fa fa-plane fa-rotate-180" *ngIf="item.flightAssignedInfo.length > 1 ? true : false"></em>
+                        </div>
+                        <div clas="info-trayect">
+                            <span>{{ item.departure }}</span>
+                            <span>-</span>
+                            <span>{{ item.arrive }}</span>
+
+                        </div>
+
+                        <div class="action-rigth row">
+                            <div class="col bottonCancel">
+                                <select class="form-control form-control-sm" id="bundle{{i}}" (change)="selectBundle(item, $event)" [disabled]="dataGlobalService.disabledBundles">
+                                    <option >Bundle</option>
+                                    <option [value]="bundleItem" *ngFor="let bundleItem of ['XS','S','M','L','XL','XXL']">{{ bundleItem }}</option>
+                                  </select>
+
+                            </div>
+                            <div class="col buttonBundle">
+                                <button type="button" class="btn btn-color-avianca btn-circle" (click)="cancelFlightAvailable(item)"> <em class="fa fa-times fa-2x"></em></button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-details">
+                        <div class="content-group row">
+                            <div class="">
+                                <ul class="timeline">
+                                    <li *ngFor="let coupon of item.flightAssignedInfo">
+                                        <a>{{ coupon.flightNumber }}</a>
+                                        <a>Salida: {{ coupon.flightDate | format:'formatDate' }} /
+                                            {{ coupon.flightHour | format:'formatHour'}}</a>&nbsp; &nbsp;
+                                        <a>Llegada: {{ coupon.arriveDate | format:'formatDate' }} /
+                                                {{ coupon.arriveHour | format:'formatHour'}}</a>
+                                        <p>
+                                            {{ coupon.origin }} - {{ coupon.arrive }} &nbsp; &nbsp; Clase : {{ coupon.rateClass }}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

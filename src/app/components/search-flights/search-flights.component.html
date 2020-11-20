@@ -1,0 +1,27 @@
+<section class="content-component col-md-14 mx-auto">
+    <div class="row search-fligth-content">
+        <div class="form-group col">
+            <select id="selectOrigin" class="form-control form-control-sm" [(ngModel)]="iataOrigin" name="iataOrigin">
+                <option selected>Origen...</option>
+                <option *ngFor="let iata of listIataOrigin" [value]="iata.codeIataCity">{{ iata.codeIataCity }} - ({{ iata.city }})
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-sm iconChange" (click)="changeCity()">
+            </button>
+        </div>
+        <div class="form-group col">
+            <select id="selectDestinations" class="form-control form-control-sm" [(ngModel)]="iataDestination" name="iataDestination">
+                <option selected>Destino...</option>
+                <option *ngFor="let iata of listIataDestination" [value]="iata.codeIataCity">{{ iata.codeIataCity }} - ({{ iata.city }})</option>
+            </select>
+        </div>
+        <div class="form-group col">
+            <input type="text" [(ngModel)]="dateValue" placeholder="Fecha Vuelo" class="form-control form-control-sm" bsDatepicker [bsConfig]="bsConfig" [minDate]="minDate">
+        </div>
+        <div class="form-group action-btn">
+            <button type="button" class="btn btn-sm btn-color-avianca boton-General" (click)="searchFlights()">Buscar</button>
+        </div>
+    </div>
+</section>

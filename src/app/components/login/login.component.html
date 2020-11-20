@@ -1,0 +1,43 @@
+<form class="animated fadeIn bg-login">
+    <form id="loginform" (ngSubmit)="login()" #forma="ngForm">
+        <div class="row">
+
+            <div class="col-md-3 mx-auto" style="margin-top:-5%">
+                <div class="card">
+                    <div class="row">
+                        <div class="col">
+                            <img src="./assets/img/logo.svg" class="card-img-top sizeLogo" alt="...">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="email" class="formLoginTitles">Sitio</label>
+                                <select class="form-control form-control-sm" id="site" *ngIf="flagSite" [(ngModel)]="site" name="site">
+                              <option *ngFor="let site of listSite" [value]="site.description">{{ site.description }}</option>
+                            </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="user" class="formLoginTitles">Usuario</label>
+                                <input type="text" class="form-control form-control-sm formLoginTitles" [ngClass]="{'is-invalid': (username.errors?.required) && username.touched}" id="user" placeholder="Usuario" [(ngModel)]="user" name="user" required #username="ngModel" autocomplete="off">
+                                <div class="invalid-feedback" *ngIf="username.errors?.required">
+                                    El campo Usuario es requerido
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="formLoginTitles">Contraseña</label>
+                                <input type="password" class="form-control form-control-sm formLoginTitles" [ngClass]="{'is-invalid': (pass.errors?.required) && pass.touched}" id="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required #pass="ngModel" autocomplete="off">
+                                <div class="invalid-feedback" *ngIf="pass.errors?.required">
+                                    El campo Contraseña es requerido
+                                </div>
+                            </div>
+                            <div class="btnCenter">
+                                <button class="btn btn-color-avianca boton-General btn-sm" type="submit" [disabled]="!(forma.valid)" [ngClass]="{'btn-secondary': !(forma.valid)}">Iniciar Sesión</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</form>

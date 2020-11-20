@@ -1,0 +1,54 @@
+<p-table [value]="dataGlobalService.flightOption" [paginator]="true" [rows]="8">
+    <ng-template pTemplate="body" let-flight>
+        <tr>
+            <div class="content-flight row">
+                <div class="content-action-fligth row">
+                    <div class="icon">
+                        <em class="fa fa-paper-plane"></em>
+                    </div>
+                    <div class="custom-control custom-radio sizeLine">
+                        <input type="radio" class="custom-control-input" id="customControlValidation{{flight.lineNumber}}" name="flightSelectLine" (change)=selectFlighLine(flight)>
+                        <label class="custom-control-label" for="customControlValidation{{flight.lineNumber}}"></label>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="content-section-flight col" *ngFor="let field of flight.flightList; let j = index">
+                        <div class="content-info info-trayect row">
+                            <div>
+                                <span class="flightIdentification">{{field.flightIdentification}}</span>
+                            </div>
+                            <div class="flight-routing">
+                                <span>{{field.departureCity}}</span>
+                                <span>-</span>
+                                <span>{{field.arrivalCity}}</span>
+                            </div>
+                            <div class="flight-date">
+                                <span> {{field.departureDate | format:'formatDate'}}
+                                              {{field.departureTime | format:'formatHour'}} </span>
+                                <span>/</span>
+                                <span> {{field.arrivalDate | format:'formatDate'}} -
+                                              {{field.arrivalTime | format:'formatHour'}} </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-flight-class row" *ngIf="flight.selectFlight">
+                        <div class="content-class " *ngFor="let className of flight.filteredClasses; let k = index" [ngClass]="{'radio-active' : (flight.selectClass == className)}">
+                            <span>{{className}}</span>
+                            <div class="form-check">
+                                <input class="form-check-input position-static btn-color-avianca" type="radio" name="flightSelectclass{{flight.lineNumber}}" id="{{flight.lineNumber}}" (click)="selectFlightClass(flight,className)" varia-label="...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-section-flight row" *ngIf="flight.bundleSelect">
+                        <div class="col buttonMargin">
+                            <button class="btn btn-sm btn-color-avianca" (click)="confirmCoupon()">Tomar Cupo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </tr>
+    </ng-template>
+</p-table>
